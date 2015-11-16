@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="io.cozy.trafficstats"
+    version="0.0.1">
+
+    <name>TrafficStats</name>
+    <description>Android traffic stats plugin</description>
+    <license>AGPL v3</license>
+    <keywords>cordova,traffic,data-consumption</keywords>
+    <repo>https://github.com/jacquarg/cordova-plugin-trafficstats.git</repo>
+    <issue>https://github.com/jacquarg/cordova-plugin-trafficstats/issues</issue>
+
+    <js-module src="www/trafficstats.js" name="trafficstats">
+        <clobbers target="navigator.trafficstats" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="TrafficStats">
+                <param name="android-package" value="io.cozy.trafficstats.TrafficStatsManager"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/TrafficStatsManager.java" target-dir="src/io/cozy/trafficstats" />
+
+    </platform>
+</plugin>
